@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLICK ₹1 Lakh Challenge</title>
+  <link rel="icon" href="Logo.jpeg" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <img src="Logo.jpeg" alt="FLICK Logo" class="logo" width="70" height="50">
+    <div class="brand">FLICK</div>
+    <div class="brand-sub">Financial Literacy & Investments Club</div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="homeScreen" class="screen active">
+      <div class="hero">
+        <h1>₹1 LAKH<br><span>INVESTMENT CHALLENGE</span></h1>
+        <p class="hero-text">
+          You have ₹1,00,000. Build your portfolio, survive unexpected market events,
+          and try to grow your wealth to the target.
+        </p>
+
+        <div class="rules-card">
+          <h3>How to Play</h3>
+          <div class="rules">
+            <div>💰 Start with <strong>₹1,00,000</strong></div>
+            <div>📊 Invest in at least <strong>3 categories</strong></div>
+            <div>🌪️ Survive <strong>5 market years</strong></div>
+            <div>🎯 Reach <strong>₹1,20,000</strong> to win</div>
+          </div>
+        </div>
+
+        <button class="primary-btn large" onclick="showScreen('nameScreen')">
+          PLAY NOW →
+        </button>
+      </div>
+    </section>
+
+    <!-- NAME -->
+    <section id="nameScreen" class="screen">
+      <div class="panel narrow">
+        <div class="step">STEP 1 OF 3</div>
+        <h2>Meet the Investor</h2>
+        <p>Enter your name for the final leaderboard.</p>
+        <input id="playerName" class="text-input" type="text" maxlength="18"
+               placeholder="Enter your name">
+        <button class="primary-btn" onclick="startInvestment()">BUILD MY PORTFOLIO →</button>
+        <p id="nameError" class="error"></p>
+      </div>
+    </section>
+
+    <!-- INVESTMENT -->
+    <section id="investScreen" class="screen">
+      <div class="section-heading">
+        <div>
+          <div class="step">STEP 2 OF 3</div>
+          <h2>Build Your Portfolio</h2>
+          <p>Choose where you want to put your ₹1,00,000.</p>
+        </div>
+        <div class="money-box">
+          <small>AVAILABLE</small>
+          <strong id="remaining">₹1,00,000</strong>
+        </div>
+      </div>
+
+      <div class="investment-grid">
+        <article class="investment-card">
+          <div class="asset-icon">📈</div>
+          <div class="asset-info">
+            <h3>Stocks</h3>
+            <span class="risk high">High Risk</span>
+            <p>Higher growth potential, but can fall sharply.</p>
+          </div>
+          <div class="amount-wrap"><span>₹</span><input class="amount-input" id="stocks" type="number" min="0" step="1000" value="0" oninput="updatePortfolio()"></div>
+        </article>
+
+        <article class="investment-card">
+          <div class="asset-icon">📊</div>
+          <div class="asset-info">
+            <h3>Mutual Funds</h3>
+            <span class="risk medium">Medium Risk</span>
+            <p>Market-linked investments with diversified exposure.</p>
+          </div>
+          <div class="amount-wrap"><span>₹</span><input class="amount-input" id="mutualFund" type="number" min="0" step="1000" value="0" oninput="updatePortfolio()"></div>
+        </article>
+
+        <article class="investment-card">
+          <div class="asset-icon">🧾</div>
+          <div class="asset-info">
+            <h3>Bonds</h3>
+            <span class="risk low-medium">Low–Medium Risk</span>
+            <p>Generally steadier returns than equities.</p>
+          </div>
+          <div class="amount-wrap"><span>₹</span><input class="amount-input" id="bonds" type="number" min="0" step="1000" value="0" oninput="updatePortfolio()"></div>
+        </article>
+
+        <article class="investment-card">
+          <div class="asset-icon">🏦</div>
+          <div class="asset-info">
+            <h3>Fixed Deposit</h3>
+            <span class="risk low">Low Risk</span>
+            <p>Stable, predictable interest for the simulation.</p>
+          </div>
+          <div class="amount-wrap"><span>₹</span><input class="amount-input" id="fd" type="number" min="0" step="1000" value="0" oninput="updatePortfolio()"></div>
+        </article>
+
+        <article class="investment-card">
+          <div class="asset-icon">🏠</div>
+          <div class="asset-info">
+            <h3>Land</h3>
+            <span class="risk medium">Medium Risk</span>
+            <p>Slower-moving asset with long-term potential.</p>
+          </div>
+          <div class="amount-wrap"><span>₹</span><input class="amount-input" id="land" type="number" min="0" step="1000" value="0" oninput="updatePortfolio()"></div>
+        </article>
+      </div>
+
+      <div class="portfolio-footer">
+        <div>
+          <span>INVESTED</span>
+          <strong id="invested">₹0</strong>
+        </div>
+        <div>
+          <span>REMAINING</span>
+          <strong id="remainingBottom">₹1,00,000</strong>
+        </div>
+        <div>
+          <span>CATEGORIES</span>
+          <strong id="categoryCount">0 / 3</strong>
+        </div>
+      </div>
+
+      <div id="investmentMessage" class="message"></div>
+      <button id="confirmBtn" class="primary-btn" onclick="confirmPortfolio()">LOCK MY PORTFOLIO →</button>
+    </section>
+
+    <!-- READY -->
+    <section id="readyScreen" class="screen">
+      <div class="panel narrow center">
+        <div class="big-icon">🎯</div>
+        <div class="step">STEP 3 OF 3</div>
+        <h2>Portfolio Locked!</h2>
+        <p>Your ₹1,00,000 is now invested.</p>
+        <div id="lockedSummary" class="locked-summary"></div>
+        <button class="primary-btn large" onclick="beginSimulation()">START MARKET SIMULATION →</button>
+      </div>
+    </section>
+
+    <!-- SIMULATION -->
+    <section id="simulationScreen" class="screen">
+      <div class="simulation-top">
+        <div>
+          <div class="step" id="yearLabel">YEAR 1 OF 5</div>
+          <h2 id="scenarioName">Market Event</h2>
+        </div>
+        <div class="wealth-box">
+          <small>PORTFOLIO VALUE</small>
+          <strong id="currentWealth">₹1,00,000</strong>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div id="scenarioIcon" class="event-icon">📈</div>
+        <div>
+          <div class="event-tag">MARKET EVENT</div>
+          <h3 id="scenarioTitle">Economic Boom</h3>
+          <p id="scenarioDescription"></p>
+        </div>
+      </div>
+
+      <div id="returnsGrid" class="returns-grid"></div>
+
+      <div class="impact-card">
+        <div>
+          <span>YOUR PORTFOLIO CHANGE</span>
+          <strong id="yearChange">+₹0</strong>
+        </div>
+        <div>
+          <span>NEW VALUE</span>
+          <strong id="yearWealth">₹1,00,000</strong>
+        </div>
+      </div>
+
+      <button id="nextYearBtn" class="primary-btn large" onclick="nextYear()">CONTINUE →</button>
+    </section>
+
+    <!-- RESULT -->
+    <section id="resultScreen" class="screen">
+      <div class="panel result-panel">
+        <div id="resultIcon" class="result-icon">🏆</div>
+        <div class="step">FINAL RESULT</div>
+        <h2 id="resultTitle">Target Achieved!</h2>
+        <p id="resultSubtitle"></p>
+
+        <div class="result-stats">
+          <div><span>STARTING WEALTH</span><strong>₹1,00,000</strong></div>
+          <div><span>FINAL WEALTH</span><strong id="finalWealth">₹0</strong></div>
+          <div><span>TOTAL RETURN</span><strong id="totalReturn">0%</strong></div>
+          <div><span>TARGET</span><strong>₹1,40,000</strong></div>
+        </div>
+
+        <div id="rewardBox" class="reward-box"></div>
+
+        <div class="result-actions">
+          <button class="primary-btn" onclick="saveScore()">SAVE SCORE</button>
+          <button class="secondary-btn" onclick="restartGame()">PLAY AGAIN</button>
+        </div>
+
+        <div id="saveMessage" class="message"></div>
+      </div>
+
+      <div class="leaderboard">
+        <h3>🏆 LOCAL LEADERBOARD</h3>
+        <p class="muted">Scores are saved on this browser only.</p>
+        <div id="leaderboardList"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>FLICK • Financial Literacy & Investments Club</footer>
+
+  <script src="investments.js"></script>
+  <script src="scenarios.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

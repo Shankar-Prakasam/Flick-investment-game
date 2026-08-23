@@ -1,78 +1,48 @@
-# Flick-investment-game
-Investment diversification simulation game
-# 💰 Investment Simulator
+# FLICK ₹1 Lakh Investment Challenge
 
-An interactive investment simulation game built with HTML, CSS, and JavaScript.
+A local web-based finance game for the FLICK club expo.
 
-Players start with ₹1,00,000 and diversify their investment across different asset classes. Over 5 years, randomly selected economic scenarios affect the value of each investment.
+## Requirements
 
-## 🎯 Features
+- VS Code
+- Optional: Live Server extension
+- Any modern web browser
 
-- Starting capital of ₹1,00,000
-- Portfolio diversification across:
-  - 📈 Stocks
-  - 📊 Mutual Funds
-  - 💵 Bonds
-  - 🏦 Fixed Deposits
-  - 🏠 Land
-- Minimum 3 investment categories
-- 5-year investment simulation
-- Random economic scenarios
-- Different returns for each asset class
-- Year-by-year portfolio growth
-- Compounded returns based on current asset values
-- Final wealth and total return calculation
-- Local leaderboard using browser localStorage
-- Responsive interface
+## Files
 
-## 📊 Investment Scenarios
+- `index.html` - game screens and structure
+- `style.css` - design and responsive layout
+- `game.js` - game logic and leaderboard
+- `investments.js` - investment categories
+- `scenarios.js` - simulated market events
+- `assets/` - optional FLICK logo/assets
 
-The simulation includes scenarios such as:
+## How to run
 
-- 📈 Economic Boom
-- 📉 Market Crash
-- 🔥 Inflation Shock
-- 🚀 Market Recovery
-- 🌧️ Economic Slowdown
-- 🏠 Strong Real Estate Cycle
-- 💻 Technology Boom
-- 🌍 Global Uncertainty
+### Option 1: VS Code + Live Server
 
-Each scenario applies different returns to each asset class.
+1. Open this folder in VS Code.
+2. Install the Live Server extension if you do not already have it.
+3. Right-click `index.html`.
+4. Select **Open with Live Server**.
 
-## 🧮 How It Works
+### Option 2: Direct browser
 
-The player initially allocates ₹1,00,000 across at least three investment categories.
+Double-click `index.html`.
 
-For each year, the selected scenario changes the value of every investment.
+The game does not require a backend.
 
-For example:
+## Game rules
 
-`New Value = Current Value × (1 + Return Rate / 100)`
+- Starting capital: ₹1,00,000
+- Player must invest the complete ₹1,00,000.
+- Player must invest in at least 3 categories.
+- Five different simulated market events are selected.
+- Returns are fictional and predefined for the game.
+- Target: ₹1,20,000.
+- Scores can be saved using browser localStorage.
 
-The updated value is then carried into the following year.
+## Important
 
-This means the simulation uses year-by-year compounding rather than calculating every year from the original investment.
-
-## 🚀 Running the Project
-
-No backend or database is required.
-
-Simply open `index.html` in a web browser.
-
-Alternatively, the project can be deployed using GitHub Pages.
-
-## 🛠️ Technologies
-
-- HTML5
-- CSS3
-- JavaScript
-- Browser LocalStorage
-
-## ⚠️ Disclaimer
-
-This project is an educational simulation and does not provide financial advice.
-
-The investment returns used in the simulation are fictional and are intended only for gameplay and educational purposes.
-
-
+This is an educational simulation, not a real investment or trading platform.
+The displayed returns are fictional game values and should not be treated as investment advice.
