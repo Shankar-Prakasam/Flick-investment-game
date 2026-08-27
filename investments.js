@@ -27,5 +27,5 @@ const investments = {
 };
 
 const STARTING_CAPITAL = 100000;
-const TARGET = 137000;
+const TARGET = 130000;
 const YEARS = 4;
